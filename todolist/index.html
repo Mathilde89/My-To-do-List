@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="root">
+
+        <div class="titre">
+
+            <h1>The To-Do list</h1>
+            <div class="entete">
+                <form action="">
+
+                    <input type="text" placeholder="Saisir votre tâche" v-model="infos.datatache">
+                    <input @click="handleInput" id="Btn" type="submit" value="A créer">
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="lists">
+            <div class="todo">
+                <h2>A faire</h2>
+
+                <template  v-for="item in list">
+                    <div class="inside" v-if="item.statut=='créée'" >
+                        {{item.datatache}}
+                        <div id="modify" v-if="item.bool" >
+                            <input  id="textemodify" type="text" v-model="item.datatache">
+                            <i @click="valid(item)" class="fa-regular fa-square-check"></i>
+                        </div>
+                        <div class="icone">
+                            <i @click="modifyTache(item)" class="fa-solid fa-pen-to-square"></i>
+                            <i @click="changeTache(item)" class="fa-solid fa-layer-group"></i>
+                            <i @click="deleteTache(item)" class="fa-solid fa-circle-xmark"></i>
+
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+            <div class="doing">
+                <h2>En cours</h2>
+                <template  v-for="item in list">
+                    <div class="inside" v-if="item.statut=='encours'" >
+                        {{item.datatache}}
+                        <div id="modify" v-if="item.bool" >
+                            <input  id="textemodify" type="text" v-model="item.datatache">
+                            <i @click="valid(item)" class="fa-regular fa-square-check"></i>
+                        </div>
+                        <div class="icone">
+                            <i @click="modifyTache(item)" class="fa-solid fa-pen-to-square"></i>
+                            <i @click="changeTachefini(item)" class="fa-solid fa-layer-group"></i>
+                            <i @click="deleteTache(item)" class="fa-solid fa-circle-xmark"></i>
+
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+            <div class="done">
+                <h2>Fini</h2>
+                <template  v-for="item in list">
+                    <div class="inside" v-if="item.statut=='fini'" >
+                        {{item.datatache}}
+                        <div id="modify" v-if="item.bool" >
+                            <input  id="textemodify" type="text" v-model="item.datatache">
+                            <i @click="valid(item)" class="fa-regular fa-square-check"></i>
+                        </div>
+                        <div class="icone">
+                            <i @click="modifyTache(item)" class="fa-solid fa-pen-to-square"></i>
+                            <i @click="changeTache(item)" class="fa-solid fa-layer-group"></i>
+                            <i @click="deleteTache(item)" class="fa-solid fa-circle-xmark"></i>
+
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
